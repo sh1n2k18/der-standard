@@ -4,12 +4,13 @@ import { validateArticles, createApiError } from '../utils/validation.js';
 
 class ArticleService {
 	private simulateNetworkDelay(): Promise<void> {
-		const delay = Math.random() * 1000 + 500; // 500-1500ms delay
-		return new Promise((resolve) => setTimeout(resolve, delay));
+		// No delay for production
+		return Promise.resolve();
 	}
 
 	private simulateError(): boolean {
-		return Math.random() < 0.1; // 10% chance of error
+		// Disable error simulation in production
+		return false;
 	}
 
 	async fetchArticles(): Promise<Article[]> {
