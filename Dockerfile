@@ -1,5 +1,5 @@
-# Use Node.js 20 (compatible with Svelte 5)
-FROM node:20-alpine
+# Build stage
+FROM node:20-alpine as builder
 
 # Install pnpm
 RUN npm install -g pnpm
@@ -16,11 +16,20 @@ RUN pnpm install --frozen-lockfile
 # Copy source code
 COPY . .
 
-# Build the application
+# Build the application (creates static files in /app/build)
 RUN pnpm run build
 
-# Expose the port
-EXPOSE 3000
+# Production stage
+FROM nginx:alpine
 
-# Start the application
-CMD ["pnpm", "run", "preview", "--host", "0.0.0.0", "--port", "3000"]
+# Copy built static files
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Copy nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
