@@ -69,11 +69,13 @@ describe('ArticleCard Component', () => {
 		});
 
 		const card = container.querySelector('[role="article"]') as HTMLElement;
-		card.dispatchEvent(new KeyboardEvent('keydown', { 
-			key: 'Enter', 
-			bubbles: true,
-			cancelable: true 
-		}));
+		card.dispatchEvent(
+			new KeyboardEvent('keydown', {
+				key: 'Enter',
+				bubbles: true,
+				cancelable: true
+			})
+		);
 
 		expect(onClickMock).toHaveBeenCalledTimes(1);
 	});

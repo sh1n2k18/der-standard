@@ -74,7 +74,7 @@ test.describe('Error Scenarios and Edge Cases', () => {
 		await page.keyboard.press('Enter');
 
 		// Should navigate to article
-		await page.waitForURL(/\/article\/.+/);
+		await page.waitForURL(/\/story\/.+\/.+/);
 
 		// Should be able to navigate back with keyboard
 		await page.keyboard.press('Tab'); // Focus back button
@@ -162,7 +162,7 @@ test.describe('Error Scenarios and Edge Cases', () => {
 		// Navigate to article and check meta tags
 		await page.waitForSelector('h2', { timeout: 10000 });
 		await page.locator('h2').first().click();
-		await page.waitForURL(/\/article\/.+/);
+		await page.waitForURL(/\/story\/.+\/.+/);
 
 		const articleTitle = await page.title();
 		expect(articleTitle).toBeTruthy();
@@ -176,7 +176,7 @@ test.describe('Error Scenarios and Edge Cases', () => {
 
 		// Click on an article
 		await page.locator('h2').first().click();
-		await page.waitForURL(/\/article\/.+/);
+		await page.waitForURL(/\/story\/.+\/.+/);
 
 		// Should be able to scroll through long content
 		await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));

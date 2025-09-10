@@ -6,15 +6,15 @@ const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
-	kit: { 
+	kit: {
 		adapter: adapter({
 			// default options are shown. On some platforms
 			// these options are set automatically — see below
 			pages: 'build',
 			assets: 'build',
-			fallback: 'index.html',  // SPA fallback for client-side routing
+			fallback: 'index.html', // SPA fallback for client-side routing
 			precompress: false,
-			strict: false  // Allow dynamic routes
+			strict: false // Allow dynamic routes
 		})
 	}
 };

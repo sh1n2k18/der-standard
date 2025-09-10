@@ -22,8 +22,8 @@ test.describe('Navigation Integration Tests', () => {
 		await firstArticle.click();
 
 		// Should navigate to article detail page
-		await page.waitForURL(/\/article\/.+/);
-		await expect(page.url()).toMatch(/\/article\/.+/);
+		await page.waitForURL(/\/story\/.+\/.+/);
+		await expect(page.url()).toMatch(/\/story\/.+\/.+/);
 
 		// Should show the article title
 		await expect(page.locator('h1')).toContainText(articleTitle || '');
@@ -47,15 +47,15 @@ test.describe('Navigation Integration Tests', () => {
 
 		// Click on first article
 		await page.locator('h2').first().click();
-		await page.waitForURL(/\/article\/.+/);
+		await page.waitForURL(/\/story\/.+\/.+/);
 
 		// Use browser back button
 		await page.goBack();
-		await expect(page.url()).toBe(page.url().split('/article')[0] + '/');
+		await expect(page.url()).toBe(page.url().split('/story')[0] + '/');
 
 		// Use browser forward button
 		await page.goForward();
-		await expect(page.url()).toMatch(/\/article\/.+/);
+		await expect(page.url()).toMatch(/\/story\/.+\/.+/);
 	});
 
 	test('should handle direct URL navigation to article', async ({ page }) => {
@@ -65,7 +65,7 @@ test.describe('Navigation Integration Tests', () => {
 
 		// Click first article to get URL
 		await page.locator('h2').first().click();
-		await page.waitForURL(/\/article\/.+/);
+		await page.waitForURL(/\/story\/.+\/.+/);
 
 		const articleUrl = page.url();
 
@@ -104,7 +104,7 @@ test.describe('Navigation Integration Tests', () => {
 		// Click on an article after scrolling
 		const articleInMiddle = page.locator('h2').nth(2);
 		await articleInMiddle.click();
-		await page.waitForURL(/\/article\/.+/);
+		await page.waitForURL(/\/story\/.+\/.+/);
 
 		// Go back
 		await page.getByRole('button').first().click();
@@ -125,7 +125,7 @@ test.describe('Navigation Integration Tests', () => {
 		await articles.click(); // Double click
 
 		// Should still navigate to article page
-		await page.waitForURL(/\/article\/.+/);
+		await page.waitForURL(/\/story\/.+\/.+/);
 		await expect(page.getByRole('button').first()).toBeVisible();
 
 		// Navigate back and try rapid back clicks

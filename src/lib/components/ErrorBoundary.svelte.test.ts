@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
-import { render, cleanup } from '@testing-library/svelte';
+import { cleanup } from '@testing-library/svelte';
 
 describe('ErrorBoundary Component', () => {
 	beforeEach(() => {

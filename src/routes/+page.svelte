@@ -26,6 +26,7 @@
 
 <div class="p-4">
 	<header class="mb-6">
+		<h1 class="sr-only">Der Standard - Aktuelle Nachrichten</h1>
 		<div class="mb-4 flex items-center">
 			<img src={DerStandardLogo} alt="DER STANDARD" class="h-8 w-auto" />
 		</div>

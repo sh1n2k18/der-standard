@@ -1,4 +1,4 @@
-export interface Article {
+export type Article = {
 	id: string;
 	headline: string;
 	author: string;
@@ -6,29 +6,29 @@ export interface Article {
 	publicationDate: string;
 	categories: string[];
 	headerImageUrl: string;
-}
+};
 
-export interface ArticleApiResponse {
+export type ArticleApiResponse = {
 	data: Article[];
 	status: 'success' | 'error';
 	message?: string;
-}
+};
 
-export interface ApiError {
+export type ApiError = {
 	status: number;
 	message: string;
 	code?: string;
-}
+};
 
-export interface LoadingState {
+export type LoadingState = {
 	isLoading: boolean;
 	error: ApiError | null;
-}
+};
 
-export interface ArticleStore {
+export type ArticleStore = {
 	articles: Article[];
 	selectedArticle: Article | null;
 	loading: LoadingState;
-}
+};
 
 export type ArticleId = string;

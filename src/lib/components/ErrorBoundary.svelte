@@ -4,13 +4,13 @@
 	import { Alert, AlertDescription, AlertTitle } from '$lib/components/ui/alert/index.js';
 	import { AlertTriangle, RefreshCw } from 'lucide-svelte';
 
-	interface Props {
+	type Props = {
 		children: import('svelte').Snippet;
 		fallback?: import('svelte').Snippet<
 			[{ error: Error | null; reset: () => void; reload: () => void }]
 		>;
 		onError?: (error: Error) => void;
-	}
+	};
 
 	let { children, fallback, onError }: Props = $props();
 	let hasError = $state(false);

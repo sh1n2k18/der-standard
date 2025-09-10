@@ -1,12 +1,12 @@
 import { writable, derived, type Readable } from 'svelte/store';
 import type { Article, ApiError, ArticleId, LoadingState } from '../types/index.js';
-import { articleService } from '../services/article-service.js';
+import * as articleService from '../services/article-service.js';
 
-interface ArticleStoreState {
+type ArticleStoreState = {
 	articles: Article[];
 	selectedArticle: Article | null;
 	loading: LoadingState;
-}
+};
 
 const initialState: ArticleStoreState = {
 	articles: [],

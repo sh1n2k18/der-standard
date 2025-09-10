@@ -7,10 +7,10 @@
 	import { createArticleUrl } from '$lib/utils/slug.js';
 	import { handleImageError } from '$lib/utils/image.js';
 
-	interface Props {
+	type Props = {
 		article: Article;
 		onclick?: () => void;
-	}
+	};
 
 	let { article, onclick }: Props = $props();
 
